@@ -1,0 +1,29 @@
+x-aws-vpc: ${AWS_VPC}
+x-aws-cluster: ${AWS_ECS_CLUSTER}
+x-aws-loadbalancer: ${AWS_ELB}
+
+services:
+  frontend:
+    image: ${IMAGE_URI:-frontend}:${IMAGE_TAG:-latest}
+    build: ./frontend
+    environment:
+      REDIS_URL: "backend"
+    networks: 
+      - demoapp
+    ports:
+      - 80:80
+
+  backend:
+    image: public.ecr.aws/bitnami/redis:6.2
+    environment:
+      ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - redisdata:/data
+    networks:
+      - demoapp
+
+volumes:
+  redisdata:
+
+networks:
+  demoapp:

@@ -1,0 +1,40 @@
+button {
+    background: none;
+    border:0px;
+}
+
+h1 {
+    text-align:center;
+}
+
+h2 {
+    text-align:center;
+}
+
+h3 {
+    text-align:center;
+    font-size: 10px;
+}
+
+table {
+    border:1px solid black;
+    margin-left:auto;
+    margin-right:auto;
+    width: 300px;
+    text-align:left;
+}
+
+th {
+    text-align:left;
+}
+
+body {
+    width: 35em;
+    margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    vertical-align: middle;
+}
+
+button {
+    cursor: pointer;
+}

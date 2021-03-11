@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo App</title>
+    <link rel='stylesheet' href="{{ url_for('static',filename='style.css') }}" />
+  </head>
+  <body>
+    <h1>Welcome to the Demo App!</h1></br></br>
+      <form id="button" name='form' method="POST" action="/">
+        <center><button id="button" type="submit" name="button"><img src={{logo}}
+                            alt="Click Button" style="width:300px;height:300px;"></button></center>
+      </form>
+      </br></br>
+      <center><p>No of Clicks Today: {{no_clicks}}</p></center>
+      <h3>Served by Container {{hostname}}</h3>
+      </br><hr></br>
+    <h2>Previous Days Results</h2>
+    {% for table in tables %}
+              {{ table|safe }}
+    {% endfor %}
+    </br></br>
+  </body>
+</html>
+  
