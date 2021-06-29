@@ -278,8 +278,9 @@ Resources:
               - elasticfilesystem:DeleteMountTarget
               - elasticfilesystem:DescribeAccessPoints
               - elasticfilesystem:DescribeBackupPolicy
-              - elasticfilesystem:DescribeFileSystems
               - elasticfilesystem:DescribeFileSystemPolicy
+              - elasticfilesystem:DescribeFileSystems
+              - elasticfilesystem:DescribeLifecycleConfiguration
               - elasticfilesystem:DescribeMountTargets
               - elasticfilesystem:ModifyMountTarget
               - elasticfilesystem:ModifyMountTargetSecurityGroups
