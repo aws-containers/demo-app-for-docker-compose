@@ -1,15 +1,15 @@
-FROM public.ecr.aws/bitnami/python:3.8.7-prod
+FROM public.ecr.aws/docker/library/python:3.8-slim
 
 LABEL maintainer=opomer@amazon.co.uk
 
 WORKDIR /app
-ADD requirements.txt /app/requirements.txt 
+ADD requirements.txt /app/requirements.txt
 
 RUN apt-get update && \
     apt-get install --no-install-recommends curl -y && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt 
+    pip install --no-cache-dir -r requirements.txt
 
 COPY ./myweb /app/
 

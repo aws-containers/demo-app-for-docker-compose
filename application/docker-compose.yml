@@ -8,15 +8,13 @@ services:
     build: ./frontend
     environment:
       REDIS_URL: "backend"
-    networks: 
+    networks:
       - demoapp
     ports:
       - 80:80
 
   backend:
-    image: public.ecr.aws/bitnami/redis:6.2
-    environment:
-      ALLOW_EMPTY_PASSWORD: "yes"
+    image: public.ecr.aws/docker/library/redis:6.2
     volumes:
       - redisdata:/data
     networks:
