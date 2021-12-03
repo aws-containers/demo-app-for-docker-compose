@@ -1,9 +1,10 @@
-from datetime import date
-from flask import Flask, render_template, request, g
 import json
 import os
 import socket
+from datetime import date
+
 import pandas as pd
+from flask import Flask, g, render_template, request
 from redis import Redis
 
 app = Flask(__name__)
@@ -15,10 +16,13 @@ hostname = socket.gethostname()
 buttoncolour = "blue"
 button = './static/{}.png'.format(buttoncolour)
 
+
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = Redis(host=redisurl, db=0, socket_timeout=5, decode_responses=True)
+        g.redis = Redis(host=redisurl, db=0, socket_timeout=5,
+                        decode_responses=True)
     return g.redis
+
 
 def generate_table():
     redis = get_redis()
@@ -35,7 +39,8 @@ def generate_table():
 
     return result
 
-@app.route('/', methods=['POST','GET'])
+
+@app.route('/', methods=['POST', 'GET'])
 def index():
 
     redis = get_redis()
@@ -50,16 +55,18 @@ def index():
     df = generate_table()
 
     return render_template(
-       'index.html',
-       no_clicks=no_clicks,
-       hostname=hostname,
-       logo=button,
-       tables=[df.to_html(classes='data', index=False)],
-       titles=df.columns.values)
+        'index.html',
+        no_clicks=no_clicks,
+        hostname=hostname,
+        logo=button,
+        tables=[df.to_html(classes='data', index=False)],
+        titles=df.columns.values)
+
 
 @app.route('/health', methods=['GET'])
 def health():
     return render_template('health.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)
