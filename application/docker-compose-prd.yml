@@ -1,0 +1,4 @@
+services:
+  frontend:
+    env_file:
+      - ./prd.env
