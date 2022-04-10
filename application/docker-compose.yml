@@ -6,22 +6,5 @@ services:
   frontend:
     image: ${IMAGE_URI:-frontend}:${IMAGE_TAG:-latest}
     build: ./frontend
-    environment:
-      REDIS_URL: "backend"
-    networks:
-      - demoapp
     ports:
       - 80:80
-
-  backend:
-    image: public.ecr.aws/docker/library/redis:6.2
-    volumes:
-      - redisdata:/data
-    networks:
-      - demoapp
-
-volumes:
-  redisdata:
-
-networks:
-  demoapp:

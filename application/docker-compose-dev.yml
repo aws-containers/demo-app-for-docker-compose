@@ -1,0 +1,18 @@
+services:
+  frontend:
+    env_file:
+      - ./dev.env
+    networks:
+      - demoapp
+  backend:
+    image: public.ecr.aws/docker/library/redis:6.2
+    volumes:
+      - redisdata:/data
+    networks:
+      - demoapp
+
+volumes:
+  redisdata:
+
+networks:
+  demoapp:
