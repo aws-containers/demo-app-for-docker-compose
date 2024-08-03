@@ -17,6 +17,9 @@ spec:
         image: nomadstormbreaker/python-redis-app:python-redis-app-5
         ports:
         - containerPort: 80
+        env:
+        - name: REDIS_URL
+          value: "redis-service"
 ---
 apiVersion: v1
 kind: Service
